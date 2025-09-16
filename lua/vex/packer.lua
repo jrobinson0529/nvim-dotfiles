@@ -76,14 +76,35 @@ return require('packer').startup(function(use)
         config = function()
             require('dashboard').setup {
                 -- config
-                theme = 'doom'
+                theme = 'hyper',
+                config = {
+                    week_header = {
+                        enable = true,
+                    },
+                    shortcut = {
+                        {
+                            icon = ' ',
+                            icon_hl = '@variable',
+                            desc = 'Files',
+                            group = 'Label',
+                            action = 'Telescope find_files',
+                            key = 'f',
+                        },
+                        {
+                            icon = ' ',
+                            desc = 'Dotfiles',
+                            group = 'Label',
+                            action = 'Telescope find_files cwd=~/.config/nvim',
+                            key = 'd',
+                        },
+                    },
+                },
+
             }
         end,
         requires = {'nvim-tree/nvim-web-devicons'}
     }
 
    -- UndoTree: Visualize Undo History
-    use {
-        'mbbil/undotree',
-    }
+   use 'mbbill/undotree'
 end)
